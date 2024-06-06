@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 dotenv.config()
 console.log(process.env.PRIVATE_KEY)
 
-
 // 1. Opzetten van de webserver
 
 // Importeer het npm pakket express uit de node_modules map

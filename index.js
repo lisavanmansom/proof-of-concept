@@ -1,4 +1,4 @@
-// propertyId = 'YOUR-GA4-PROPERTY-ID';
+propertyId = '301922918';
 
 // Imports the Google Analytics Data API client library.
 const {BetaAnalyticsDataClient} = require('@google-analytics/data');
