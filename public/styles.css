@@ -1,3 +1,5 @@
+/*--------pre dashboard page--------- */
+/*------------font faces------------- */
 @font-face {
     font-family: "Nunito";
     src: url(/Nunito-Black.ttf);
@@ -50,6 +52,8 @@
       --Snow: #FCF8F7;
     }
 
+
+/*------------general styling------------- */
 * {  margin: 0; padding: 0; box-sizing: border-box; scrollbar-width: none; list-style: none;}
 *::-webkit-scrollbar {display: none;}
 
@@ -71,8 +75,10 @@ p   {  font-size: 16px; color: var(--white); font-family: "Nunito"; }
 a   {  font-size: 16px; color: var(--white); font-family: "Nunito"; text-decoration: none; cursor: pointer;}
 li  {  font-size: 16px; color: var(--white); font-family: "Nunito"; }
 
+
 h2, h3, h4  {  font-weight: 120;  }
 label       {  display: none;     }
+
 
 main {
     align-items: start;
@@ -83,6 +89,7 @@ main {
     width: 100%;
   }
 
+/*------------specific styling------------- */
   header {
     align-items: center;
     justify-content: start;
@@ -125,7 +132,7 @@ main {
     }
   }
 
-  section {
+  #container {
     overflow-x: hidden;
     height: 100%;
     width: 100%;
@@ -173,22 +180,35 @@ main {
       > .block1 {
         border: .12em solid var(--GrannySmithApple-50);
         grid-area: header;
+
+        h2 {
+          border-bottom: .01em solid var(--GrannySmithApple-50);
+        }
       }
 
       > .block2 {
         border: .12em solid var(--OrangeCrayola-50);
         grid-area: main;
+
+        h3 {
+          border-bottom: .01em solid var(--OrangeCrayola-50);
+        }
       }
 
       > .block3 {
         border: .12em solid var(--MajorelleBlue-50);
         grid-area: footer;
         margin: -1.15em 0 0 0;
+
+        h4 {
+          border-bottom: .01em solid var(--MajorelleBlue-50);
+        }
       }
 
       > .orb-1, .orb-2, .orb-3 {
         filter: blur(0.8452px); 
         opacity: 0.983096; 
+        pointer-events: none;
         transform: translate3d(0px, 0px, 0px) scale3d(0.970418, 0.970418, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); 
         transform-style: preserve-3d;
         position: absolute;
@@ -204,7 +224,7 @@ main {
       > .orb-2 {
         right: 38px;
         top: 458px;
-        transform: scale(0.85) rotateX(0deg) rotateY(0deg) rotateZ(180deg);
+        transform: scale(0.85);
       }
 
       > .orb-3 {
@@ -221,6 +241,7 @@ main {
     border-top-right-radius: 15px;
   }
 
+  /*--------------mediaquery's--------------- */
   @media (min-width:450px) {
     header { height: 25em;
      > svg { width: 7.5em; height: 7.5em;
@@ -229,5 +250,64 @@ main {
       > h1 { margin: 3em 0 0 5.5em; font-size: 25px;}
       > a  { font-weight: 80; font-size: 18px; margin: 1em 0 0 8.3em;}
   }
+  #container { column-gap: 2em;
+    > .orb-1 { right: 22px; top: 40px;
+               transform: scale(1.2); }
+    > .orb-2 { right: 187px; top: 447px; 
+               transform: scale(1.0);}
+    > .orb-3 { top: 815px; right: 5px;
+               transform: scale(0.85); } 
+  }
 }
-       
+ 
+@media (min-width:600px) {
+  header { height: 23.5em;
+   > svg { width: 8em; height: 8em; 
+           margin: 3.3em 16em 0 0; }
+
+      > h1 { margin: 3em 0 0 0.5em; font-size: 27.5px; width: 16em;}
+      > a  { font-size: 20px; margin: .5em 0 0 11.3em;}
+  }
+  #container   { column-gap: 4em; row-gap: 16em;
+                 padding: 5em 2em 7em 2em;
+    > .block3  { margin: -1.75em 0 0 0;}
+
+      > .orb-1 { right: 121px; top: 20px;}
+      > .orb-2 { right: 288px; top: 420px; 
+                 transform: scale(1.1);}
+      > .orb-3 { top: 720px; right: 30px; transform: scale(0.9);} 
+  }
+}
+
+@media (min-width:750px) {
+  header { height: 27em;
+    > svg { width: 10em; height: 10em; 
+            margin: 3.3em 30em 0 0; }
+ 
+       > h1 { margin: 3em 0 0 0.5em; font-size: 30px; width: 21em;}
+       > a  { font-size: 20px; margin: .5em 0 0 20.7em;}
+   }
+  #container    { column-gap: 7em;
+                  padding: 5em 3em 7em 3em;
+      > .block3 { margin: -1.75em 0 0 0;}
+
+      > .orb-1 { right: 121px; top: 20px;}
+      > .orb-2 { right: 288px; top: 420px; 
+                 transform: scale(1.1);}
+      > .orb-3 { top: 720px; right: 30px; transform: scale(0.9);} 
+}
+}
+
+
+
+/* the 3 pre-dashboard overview  with the orbs becomes 
+   from this mediaquery on a row layout             */
+@media (min-width:1000px) {
+#container {
+  column-gap: 9em; row-gap: 9em;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+    "header . footer"
+    "header main footer"
+    ". main .";}
+}
