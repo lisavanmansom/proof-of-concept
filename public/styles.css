@@ -67,9 +67,9 @@ h2  {  font-size: 24px;  }
 h3  {  font-size: 24px;  }
 h4  {  font-size: 24px;  }
 h5  {  font-size: 14px;  }
-p   {  font-size: 12px; color: var(--white); font-family: "Nunito"; }
-a   {  font-size: 12px; color: var(--white); font-family: "Nunito"; text-decoration: none; cursor: pointer;}
-li  {  font-size: 12px; color: var(--white); font-family: "Nunito"; }
+p   {  font-size: 16px; color: var(--white); font-family: "Nunito"; }
+a   {  font-size: 16px; color: var(--white); font-family: "Nunito"; text-decoration: none; cursor: pointer;}
+li  {  font-size: 16px; color: var(--white); font-family: "Nunito"; }
 
 h2, h3, h4  {  font-weight: 120;  }
 label       {  display: none;     }
@@ -86,26 +86,42 @@ main {
   header {
     align-items: center;
     justify-content: start;
-    height: 13.5em;
+    height: 21.5em;
     width: 100%;
     display: flex;
     flex-direction: column;
 
     > svg {
-        width: 4em;
-        height: 4em;
-        margin: 1em 12em 0 0;
+        width: 6em;
+        height: 6em;
+        margin: 2.3em 9em 0 0;
     }
 
     > h1 {
         font-weight: 120;
         text-align: end;
         width: 9em; 
-        margin: 3em 0 0 3.5em;
+        margin: 5em 0 0 3.5em;
 
         background: linear-gradient(90deg, rgba(249,116,57,1) 0%, rgba(142,84,194,1) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+
+    > a {
+        font-weight: 70;
+        text-align: end;
+        width: 8em;
+        margin: 1em 0 0 3.5em;
+        position: relative;
+
+        > svg {
+          width: 2em;
+          height: 2em;
+          position: absolute;
+          top: -4px;
+          right: -40px;
+        }
     }
   }
 
@@ -115,7 +131,7 @@ main {
     width: 100%;
     overflow-y: hidden;
     margin: 0 auto;
-    padding: 5em 1em;
+    padding: 5em 1em 7em 1em;
     gap: 1.25em;
     row-gap: 17em;
     position: relative;
@@ -186,13 +202,32 @@ main {
       }
       
       > .orb-2 {
-        transform: matrix(0, .9, .9, 0, -55, 446);
+        right: 38px;
+        top: 458px;
+        transform: scale(0.85) rotateX(0deg) rotateY(0deg) rotateZ(180deg);
       }
 
       > .orb-3 {
-        transform: matrix(0, 0.7, 0.7, 0, -45, 810);
+        top: 850px;
+        transform: scale(0.7);
       }
+  }
+
+  footer {
+    background-color: var(--RaisinBlack);
+    height: 7.5em;
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  @media (min-width:450px) {
+    header { height: 25em;
+     > svg { width: 7.5em; height: 7.5em;
+             margin: 2.3em 14em 0 0;}
+
+      > h1 { margin: 3em 0 0 5.5em; font-size: 25px;}
+      > a  { font-weight: 80; font-size: 18px; margin: 1em 0 0 8.3em;}
+  }
 }
-
-
        
