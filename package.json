@@ -8,7 +8,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node --env-file=.env server.js",
     "dev": "nodemon server.js"
   },
   "repository": {

@@ -1,7 +1,7 @@
-propertyId = '301922918';
+const propertyId = '301922918';
 
 // Imports the Google Analytics Data API client library.
-const {BetaAnalyticsDataClient} = require('@google-analytics/data');
+import {BetaAnalyticsDataClient} from '@google-analytics/data';
 
 // Using a default constructor instructs the client to use the credentials
 // specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
@@ -13,7 +13,7 @@ async function runReport() {
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: '2020-03-31',
+        startDate: '2024-06-08',
         endDate: 'today',
       },
     ],

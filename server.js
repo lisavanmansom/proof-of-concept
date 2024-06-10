@@ -9,8 +9,14 @@ import express from 'express'
 // Importeer de zelfgemaakte functie fetchJson uit de ./helpers map
 import fetchJson from './helpers/fetch-json.js'
 
-// Stel het basis endpoint in
-const apiUrl = ''
+const propertyId = '301922918';
+
+// Imports the Google Analytics Data API client library.
+import {BetaAnalyticsDataClient} from '@google-analytics/data';
+
+const analyticsDataClient = new BetaAnalyticsDataClient();
+
+
 
 // Maak een nieuwe express app aan
 const app = express()
@@ -33,8 +39,27 @@ app.use(express.urlencoded({ extended: true }))
 
 // Maak een GET route voor de index
 // Stap 1
-app.get('/', function (request, response) {
-  response.render('index')
+app.get('/', async function (request, response) {
+  const [apiResponse] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: '2024-06-08',
+        endDate: 'today',
+      },
+    ],
+    dimensions: [
+      {
+        name: 'city',
+      },
+    ],
+    metrics: [
+      {
+        name: 'activeUsers',
+      },
+    ],
+  });
+  response.render('index', {apiResponse: apiResponse})
 })
 
 

@@ -6,42 +6,41 @@
         <h1>Your Data insight just a click away</h1>
     </header>
 
-    <section>
-        <form action="#">
-              <fieldset id="container">
-                
-                <div class="block1" id="block1">
+    <section id="container">
 
-                    <h2>Google</h2>
-                    <input type="radio" id="google" name="drone" value="google" checked />
-                    <label for="google">Google</label>
+        <picture class="orb-1">
+            <%- include('./partials/orb') %>
+        </picture>
+        
+        <article class="block1" id="block1">
 
-                </div>
+                <h2>Google</h2>
 
-                <div class="block2" id="block2">
+        </article>
 
-                    <h3>Linkedin</h3>
-                    <input type="radio" id="linkedin" name="drone" value="linkedin" />
-                    <label for="linkedin">Linkedin</label>
+        <% apiResponse.rows.forEach(function(row) { %>
+            <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
+        <% }) %>
 
-                </div>
+        <article class="block2" id="block2">
 
-                <div class="block3" id="block3">
+            <h3>Linkedin</h3>
 
-                        <h4>Hotjar</h4>
-                        <input type="radio" id="hotjar" name="drone" value="hotjar" />
-                        <label for="hotjar">Hotjar</label>
+        </article>
 
-                </div>
+        <article class="block3" id="block3">
 
-               <div class="block4" id="block4"></div>
-                
-              </fieldset>
-              
-              <div class="selection-buttons">
-              <button type="submit">select all</button>
-              <button type="submit">continue</button></div>
-            </form>
+            <h4>Hotjar</h4>
+
+        </article>
+        
+        <picture class="orb-2">
+            <%- include('./partials/orb') %>
+        </picture>
+
+        <picture class="orb-3">
+            <%- include('./partials/orb') %>
+        </picture>
 
     </section>
 </main>
