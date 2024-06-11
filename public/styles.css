@@ -266,7 +266,9 @@ main {
            margin: 3.3em 16em 0 0; }
 
       > h1 { margin: 3em 0 0 0.5em; font-size: 27.5px; width: 16em;}
-      > a  { font-size: 20px; margin: .5em 0 0 11.3em;}
+      > a  { font-size: 20px; margin: .5em 0 0 11.3em;
+          > svg { top: -5px; }
+      }
   }
   #container   { column-gap: 4em; row-gap: 16em;
                  padding: 5em 2em 7em 2em;
@@ -289,25 +291,84 @@ main {
    }
   #container    { column-gap: 7em;
                   padding: 5em 3em 7em 3em;
+      > .block1, .block2, .block3 {max-width: 22em;}
       > .block3 { margin: -1.75em 0 0 0;}
 
-      > .orb-1 { right: 121px; top: 20px;}
-      > .orb-2 { right: 288px; top: 420px; 
-                 transform: scale(1.1);}
-      > .orb-3 { top: 720px; right: 30px; transform: scale(0.9);} 
-}
-}
+      > .block1, .block2, .block3 {
+        > h2, h3, h4 { font-size: 30px;}
+      }
 
 
+      > .orb-1 { right: 122px; top: 21px; }
+      > .orb-2 { right: 407px;}
+      > .orb-3 { top: 741px; right: 121px; } 
+}
+}
 
 /* the 3 pre-dashboard overview  with the orbs becomes 
    from this mediaquery on a row layout             */
 @media (min-width:1000px) {
-#container {
-  column-gap: 9em; row-gap: 9em;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: 
-    "header . footer"
-    "header main footer"
-    ". main .";}
+  header { height: 30em;
+    > svg { width: 11em; height: 11em; 
+            margin: 3.3em 46em 0 0; }
+ 
+       > h1 { margin: 3em 0 0 5.5em; font-size: 35px; width: 20em;}
+       > a  { font-size: 25px; margin: .5em 0 0 24em;
+          > svg { right: -55px; }
+        }
+   }
+  #container {
+    column-gap: 9em; row-gap: 7em;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+      "header . footer"
+      "header main footer"
+      ". main .";
+
+      > .block1, .block2, .block3 { height: 25em;
+        > h2, h3, h4 { font-size: 28px;}
+      }
+
+      > .orb-1 { left: 222px; top: 18px; }
+      > .orb-2 { right: 187px; top: 210px;}
+      > .orb-3 { display: none;} 
+  }
+}
+
+@media (min-width:1300px) {
+  #container {    padding: 5em 6em 7em 6em;
+    > .orb-1 { left: 373px; top: 58px; }
+    > .orb-2 { right: 300px; top: 240px; }
+  }
+}
+
+@media (min-width:1700px) {
+  header { height: 32.5em;
+    > svg { width: 13em; height: 13em;
+            margin: 3.3em 37em 0 0; }
+    > h1  { margin: 3em 0 0 -4.45em; font-size: 45px; }
+    > a  { font-size: 30px; margin: .5em 0 0 11.5em;
+      > svg { right: -60px; top: -6px; }
+    }
+  }
+  #container {
+    > .block1, .block2, .block3 {  max-width: 25em;
+      > h2, h3, h4 { font-size: 30px;}
+    }
+    > .orb-1 { left: 500px; top: 108px;}
+    > .orb-2 { right: 460px; top: 280px; }
+  }
+}
+
+@media (min-width:2000px) {
+   header {
+     > svg { margin: 3.3em 31em 0 0; }
+  }
+  #container { padding: 5em 15em 7em 15em;
+    > .block1, .block2, .block3 {
+      > h2, h3, h4 { font-size: 30px;}
+    }
+    > .orb-1 { left: 730px; top: 208px; }
+    > .orb-2 { right: 631px; top: 361px; }
+  }
 }
