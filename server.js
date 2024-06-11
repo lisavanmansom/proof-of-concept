@@ -3,20 +3,17 @@ dotenv.config()
 console.log(process.env.PRIVATE_KEY)
 
 // 1. Opzetten van de webserver
-
 // Importeer het npm pakket express uit de node_modules map
 import express from 'express'
 // Importeer de zelfgemaakte functie fetchJson uit de ./helpers map
 import fetchJson from './helpers/fetch-json.js'
 
+// Imports the Google Analytics Data API client library.
 const propertyId = '301922918';
 
-// Imports the Google Analytics Data API client library.
 import {BetaAnalyticsDataClient} from '@google-analytics/data';
 
 const analyticsDataClient = new BetaAnalyticsDataClient();
-
-
 
 // Maak een nieuwe express app aan
 const app = express()
@@ -39,7 +36,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // Maak een GET route voor de index
 // Stap 1
-app.get('/', async function (request, response) {
+app.get('/preface', async function (request, response) {
   const [apiResponse] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
@@ -59,9 +56,18 @@ app.get('/', async function (request, response) {
       },
     ],
   });
-  response.render('index', {apiResponse: apiResponse})
+  response.render('preface', {apiResponse: apiResponse})
 })
 
+// Route for the index page
+app.get('/', function (request, response) {
+  response.render('index');
+});
+
+// Route for the dashboard page
+app.get('/dashboard', function (request, response) {
+  response.render('dashboard');
+});
 
 // 3. Start de webserver
 // Stel het poortnummer in waar express op moet gaan luisteren

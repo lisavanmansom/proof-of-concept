@@ -80,7 +80,7 @@ h2, h3, h4  {  font-weight: 120;  }
 label       {  display: none;     }
 
 
-main {
+.p {
     align-items: start;
     background-color: var(--Snow);
     display: flex;

@@ -1,0 +1,51 @@
+<%- include('./partials/head') %>
+
+<main class="p">
+    <header>
+        <%- include('./partials/logo') %>
+        <h1>Your Data insight just a click away</h1>
+        <a href="/dashboard">let's get started
+            <%- include('./partials/arrow-right') %>
+        </a>
+    </header>
+
+    <section id="container">
+
+        <picture class="orb-1">
+            <%- include('./partials/orb') %>
+        </picture>
+        
+        <article class="block1" id="block1">
+
+                <h2>Google</h2>
+
+        </article>
+
+        <% apiResponse.rows.forEach(function(row) { %>
+            <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
+        <% }) %>
+
+        <article class="block2" id="block2">
+
+            <h3>Linkedin</h3>
+
+        </article>
+
+        <article class="block3" id="block3">
+
+            <h4>Hotjar</h4>
+
+        </article>
+        
+        <picture class="orb-2">
+            <%- include('./partials/orb') %>
+        </picture>
+
+        <picture class="orb-3">
+            <%- include('./partials/orb') %>
+        </picture>
+
+    </section>
+</main>
+
+<%- include('./partials/footer') %>
