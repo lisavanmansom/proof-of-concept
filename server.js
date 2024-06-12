@@ -65,9 +65,28 @@ app.get('/', function (request, response) {
 });
 
 // Route for the dashboard page
-app.get('/dashboard', function (request, response) {
-  response.render('dashboard');
-});
+app.get('/dashboard', async function (request, response) {
+  const [apiProgress] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: '2023-06-01',
+        endDate: 'today',
+      },
+    ],
+    dimensions: [
+      {
+        name: 'firstSessionDate',
+      },
+    ],
+    metrics: [
+      {
+        name: 'activeUsers',
+      },
+    ],
+  });
+  response.render('dashboard', {data: apiProgress})
+})
 
 // 3. Start de webserver
 // Stel het poortnummer in waar express op moet gaan luisteren

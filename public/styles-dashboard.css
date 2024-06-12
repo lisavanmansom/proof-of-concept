@@ -1,0 +1,32 @@
+:root {
+    --primary-font: "Nunito", sans-serif;
+    /*--------brandcolours--------- */
+    /* the 50 is the main hue, if the number is higher 
+    or lower than it's a shadow or a highligth,  */
+
+      --GrannySmithApple-50:#B9FFB7;
+      --OrangeCrayola-50:#FF7535;
+      --MajorelleBlue-50:#5E43FF;
+
+      --Xiketic: #120B11;
+      --RaisinBlack: #302A2F;
+      --SonicSilver: #736f72;
+      --Snow: #FCF8F7;
+    }
+
+    
+/*------------general styling------------- */
+.d {
+  align-items: center;
+  display: flex;
+  /* height: 100dvh; */
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: hidden;
+  width: 100%;
+  
+    #progressChart {
+      max-width: 100%;
+      width: 400px; /* Set the desired width */
+      height: 400px; /* Set the desired height */}
+  }
