@@ -1,0 +1,60 @@
+<!-- chart with data from sessions -->
+<div>
+    <canvas id="sessionChart" width="200" height="400" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('sessionChart').getContext('2d');
+
+    // Sort data rows by metric value in ascending order
+    const sortedData = <%- JSON.stringify(session.rows.sort((a, b) => a.metricValues[0].value - b.metricValues[0].value)) %>;
+
+    new Chart(ctx, {
+        type: 'line', 
+        data: {
+            labels: sortedData.map(row => row.dimensionValues[0].value),
+            datasets: [{
+                label: 'first session data',
+                data: sortedData.map(row => row.metricValues[0].value),
+                borderWidth: 2, // Adjust border width
+                fill: false, // Ensure the line is not filled
+                borderColor: '#B9FFB7', // Customize the line color
+                backgroundColor: 'black', // Customize the fill color
+                tension: 0.5 // Customize the line tension (curviness)
+            }]
+        },
+        options: {
+        responsive: true,
+        maintainAspectRatio: false, // Allow the chart to resize according to the canvas size
+        scales: {
+            x: {
+                grid: {
+                    display: false // Remove grid lines on the x-axis
+                }
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false // Remove grid lines on the y-axis
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 14 // Change the font size of the legend
+                    }
+                }
+            }
+        },
+        elements: {
+            point: {
+                radius: 5, // Customize the point size
+                backgroundColor: '#B9FFB7' // Customize the point color
+            }
+        }
+    }
+});
+</script>

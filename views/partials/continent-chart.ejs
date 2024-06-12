@@ -1,0 +1,45 @@
+<!-- chart with data from continents -->
+<div>
+    <canvas id="continentChart" width="200" height="400" ></canvas>
+</div>
+
+<script>
+    // Check if the canvas element exists before rendering the chart
+    const continentChartCanvas = document.getElementById('continentChart');
+    if (continentChartCanvas) {
+        const ctx2 = continentChartCanvas.getContext('2d');
+
+        // Sort data rows by metric value in ascending order
+        const sortedData = <%- JSON.stringify(continent.rows.sort((a, b) => a.metricValues[0].value - b.metricValues[0].value)) %>;
+
+        new Chart(ctx2, {
+            type: 'line', 
+            data: {
+                labels: sortedData.map(row => row.dimensionValues[0].value),
+                datasets: [{
+                    label: 'continent data',
+                    data: sortedData.map(row => row.metricValues[0].value),
+                    borderWidth: 2, // Adjust border width
+                    fill: true, // Ensure the line is not filled
+                    borderColor: '#B9FFB7', // Customize the line color
+                    backgroundColor: '#EBFFEB', // Customize the fill color
+                    tension: 0.5 // Customize the line tension (curviness)
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        grid: {
+                            display: false // Remove grid lines on the x-axis
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false // Remove grid lines on the y-axis
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>

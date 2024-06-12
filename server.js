@@ -37,26 +37,27 @@ app.use(express.urlencoded({ extended: true }))
 // Maak een GET route voor de index
 // Stap 1
 app.get('/preface', async function (request, response) {
-  const [apiResponse] = await analyticsDataClient.runReport({
+  const [apiAchievement] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: '2024-06-08',
+        startDate: '2024-06-01',
         endDate: 'today',
       },
     ],
     dimensions: [
       {
-        name: 'city',
+        name: 'hour',
       },
     ],
     metrics: [
       {
-        name: 'activeUsers',
+        name: 'totalUsers',
       },
     ],
   });
-  response.render('preface', {apiResponse: apiResponse})
+  response.render('preface', {
+    achievement: apiAchievement})
 })
 
 // Route for the index page
@@ -66,7 +67,7 @@ app.get('/', function (request, response) {
 
 // Route for the dashboard page
 app.get('/dashboard', async function (request, response) {
-  const [apiProgress] = await analyticsDataClient.runReport({
+  const [apiSessions] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
       {
@@ -85,8 +86,78 @@ app.get('/dashboard', async function (request, response) {
       },
     ],
   });
-  response.render('dashboard', {data: apiProgress})
+
+  const [apiContinent] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: '2023-06-01',
+        endDate: 'today',
+      },
+    ],
+    dimensions: [
+      {
+        name: 'continent',
+      },
+    ],
+    metrics: [
+      {
+        name: 'activeUsers',
+      },
+    ],
+  });
+
+  const [apiCountry] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: '2021-06-01',
+        endDate: 'today',
+      },
+    ],
+    dimensions: [
+      {
+        name: 'country',
+      },
+    ],
+    metrics: [
+      {
+        name: 'activeUsers',
+      },
+    ],
+  });
+
+  const [apiCity] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: '2023-06-01',
+        endDate: 'today',
+      },
+    ],
+    dimensions: [
+      {
+        name: 'city',
+      },
+    ],
+    metrics: [
+      {
+        name: 'activeUsers',
+      },
+    ],
+  });
+
+  
+
+  response.render('dashboard', {
+    session: apiSessions,
+    continent : apiContinent,
+    country : apiCountry,
+    city : apiCity
+  })
 })
+
+
 
 // 3. Start de webserver
 // Stel het poortnummer in waar express op moet gaan luisteren

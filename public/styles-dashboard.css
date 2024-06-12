@@ -24,6 +24,11 @@
   flex-direction: column;
   overflow-y: hidden;
   width: 100%;
+
+  background-image: url("mesh-479.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
   
     #progressChart {
       max-width: 100%;
