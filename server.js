@@ -2,152 +2,110 @@ import dotenv from "dotenv";
 dotenv.config()
 console.log(process.env.PRIVATE_KEY)
 
+
 // 1. Opzetten van de webserver
-// Importeer het npm pakket express uit de node_modules map
 import express from 'express'
-// Importeer de zelfgemaakte functie fetchJson uit de ./helpers map
 import fetchJson from './helpers/fetch-json.js'
 
-// Imports the Google Analytics Data API client library.
+
+// Import the Google Analytics Data API client library.
 const propertyId = '301922918';
-
 import {BetaAnalyticsDataClient} from '@google-analytics/data';
-
 const analyticsDataClient = new BetaAnalyticsDataClient();
+
 
 // Maak een nieuwe express app aan
 const app = express()
-
 // Stel ejs in als template engine
-// View engine zorgt ervoor dat data die je ophaalt uit de api , waar je in je code dingen mee doet, daar html van maakt
 app.set('view engine', 'ejs')
-
 // Stel de map met ejs templates in
 app.set('views', './views')
-
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('public'))
-
 // Zorg dat werken met request data makkelijker wordt
 app.use(express.urlencoded({ extended: true }))
 
-/*** Routes & data ***/
 
-
-// Maak een GET route voor de index
-// Stap 1
-app.get('/preface', async function (request, response) {
-  const [apiAchievement] = await analyticsDataClient.runReport({
-    property: `properties/${propertyId}`,
-    dateRanges: [
-      {
-        startDate: '2024-06-01',
-        endDate: 'today',
-      },
-    ],
-    dimensions: [
-      {
-        name: 'hour',
-      },
-    ],
-    metrics: [
-      {
-        name: 'totalUsers',
-      },
-    ],
-  });
-  response.render('preface', {
-    achievement: apiAchievement})
-})
-
-// Route for the index page
+// Routes and data
+// GET route for the index page
 app.get('/', function (request, response) {
   response.render('index');
 });
+
+// GET route voor de preface
+app.get('/preface', async function (request, response) {
+  const [apiAchievement] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+
+    // data total users per hour 
+    dateRanges: [{ startDate: '2024-06-01',
+                   endDate: 'today',
+                  },],
+
+    dimensions: [{ name: 'hour', },],
+
+    metrics: [{    name: 'totalUsers', },], 
+
+  });
+
+  response.render('preface', {
+    achievement: apiAchievement})
+})
 
 // Route for the dashboard page
 app.get('/dashboard', async function (request, response) {
   const [apiSessions] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
-    dateRanges: [
-      {
-        startDate: '2023-06-01',
-        endDate: 'today',
-      },
-    ],
-    dimensions: [
-      {
-        name: 'firstSessionDate',
-      },
-    ],
-    metrics: [
-      {
-        name: 'activeUsers',
-      },
-    ],
-  });
 
+    // data active users firstsessions 
+    dateRanges: [{ startDate: '2023-06-01',
+                   endDate: 'today',
+                   },],
+
+    dimensions: [{ name: 'firstSessionDate', },],
+
+    metrics: [{    name: 'activeUsers', },],
+
+  });
+  
   const [apiContinent] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
-    dateRanges: [
-      {
-        startDate: '2023-06-01',
-        endDate: 'today',
-      },
-    ],
-    dimensions: [
-      {
-        name: 'continent',
-      },
-    ],
-    metrics: [
-      {
-        name: 'activeUsers',
-      },
-    ],
+    
+    // data active users per continent 
+    dateRanges: [{ startDate: '2023-06-01',
+                   endDate: 'today', },],
+
+    dimensions: [{ name: 'continent', },],
+
+    metrics: [{    name: 'activeUsers', },],
+
   });
 
   const [apiCountry] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
-    dateRanges: [
-      {
-        startDate: '2021-06-01',
-        endDate: 'today',
-      },
-    ],
-    dimensions: [
-      {
-        name: 'country',
-      },
-    ],
-    metrics: [
-      {
-        name: 'activeUsers',
-      },
-    ],
+
+    // data active users per country 
+    dateRanges: [{ startDate: '2021-06-01',
+                   endDate: 'today', },],
+
+    dimensions: [{ name: 'country', },],
+
+    metrics: [{    name: 'activeUsers', },],
+
   });
 
   const [apiCity] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
-    dateRanges: [
-      {
-        startDate: '2023-06-01',
-        endDate: 'today',
-      },
-    ],
-    dimensions: [
-      {
-        name: 'city',
-      },
-    ],
-    metrics: [
-      {
-        name: 'activeUsers',
-      },
-    ],
-  });
+    // data active users per city 
 
-  
+    dateRanges: [{ startDate: '2023-06-01',
+                   endDate: 'today', },],
+
+    dimensions: [{ name: 'city', },],
+
+    metrics: [{   name: 'activeUsers', },],
+
+  });
 
   response.render('dashboard', {
     session: apiSessions,
@@ -158,11 +116,8 @@ app.get('/dashboard', async function (request, response) {
 })
 
 
-
-// 3. Start de webserver
-// Stel het poortnummer in waar express op moet gaan luisteren
+// Stel het portnummer in waar express op moet gaan 
 app.set('port', process.env.PORT || 8000)
-
 // Start express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door

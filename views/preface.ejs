@@ -4,9 +4,10 @@
     <header>
         <%- include('./partials/logo') %>
         <h1>Your Data insight just a click away</h1>
+
         <a href="/dashboard">let's get started
-            <%- include('./partials/arrow-right') %>
-        </a>
+            <%- include('./partials/arrow-right') %></a>
+            
     </header>
 
     <section id="container">
@@ -21,9 +22,12 @@
 
         </article>
 
+
+        <!-- temporary code -->
         <% achievement.rows.forEach(function(row) { %>
             <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
         <% }) %>
+
 
         <article class="block2" id="block2">
 

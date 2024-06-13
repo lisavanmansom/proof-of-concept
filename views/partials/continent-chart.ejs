@@ -4,12 +4,9 @@
 </div>
 
 <script>
-    // Check if the canvas element exists before rendering the chart
     const continentChartCanvas = document.getElementById('continentChart');
     if (continentChartCanvas) {
         const ctx2 = continentChartCanvas.getContext('2d');
-
-        // Sort data rows by metric value in ascending order
         const sortedData = <%- JSON.stringify(continent.rows.sort((a, b) => a.metricValues[0].value - b.metricValues[0].value)) %>;
 
         new Chart(ctx2, {
