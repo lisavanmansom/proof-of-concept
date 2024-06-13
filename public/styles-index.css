@@ -25,9 +25,9 @@
     overflow-y: hidden;
     width: 100%;
 
-    background-image: url("mesh-479.png");
+    background-attachment: fixed;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: repeat;
 
     > div {
@@ -36,7 +36,7 @@
         display: flex;
         flex-direction: column;
         height: 20em;
-        width: 15em;
+        width: 17em;
 
         background: rgba(227, 227, 227, 0.43);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -90,34 +90,38 @@
 
             a:nth-of-type(1) {
                 background-color: var(--Snow);
-                border: .01em solid var(--GrannySmithApple-50);
                 border-radius: .3em;
                 font-size: 20px;
                 font-weight: 120;
                 padding: .25em 0;
                 width: 9.5em;
+                transition: all 0.3s ease;
                 text-align: center;
             }
-
             a:nth-of-type(2) {
-                font-size: 15px;
                 font-weight: 80;
                 padding: .5em 0 1em 0;
+
+                p { font-size: 12px;}
             }
         }
     }
 }
 
-@media (min-width:700px) {
-    .i {
+@media (max-width:700px) {
+    .i { background-image: url("mesh-479.png");}
+}
+
+@media (min-width:700px) and (max-width:1200px) {
+    .i { background-image: url("mesh-479.png");
        > div {
         transform: scale(1.2);
         }
     }
 }
 
-@media (min-width:1200px) {
-    .i {
+@media (min-width:1200px) and (max-width:2000px) {
+    .i { background-image: url("mesh-479.png");
        > div {
         transform: scale(1.4);
         }
@@ -125,7 +129,7 @@
 }
 
 @media (min-width:2000px) {
-    .i {
+    .i { background-image: url("mesh-479.png");
        > div {
         transform: scale(1.6);
         }
