@@ -1,0 +1,47 @@
+<%- include('./partials/top') %>
+
+
+<h1>Employees</h1>
+
+    <form action="" id="common-employee-filter">
+        <label for="common-employee-filter">Sorteer op:</label>
+            <select name="common-employee-filter" id="common-employee-filter">
+                <option value="none">-</option>
+                <option value="name-up">Naam ↑</option>
+                <option value="name-down">Naam ↓</option>
+                <option value="sickdays">Ziektedagen</option>
+                <option value="productivity">Productiviteit</option>
+            </select>
+     </form>    
+
+
+
+    <form action="" id="team-employee-filter">
+        <label for="team-employee-filter">Team:</label>
+            <select name="team-employee-filter id="team-employee-filter">
+                <option value="none">-</option>
+                <option value="gecko">Gecko</option>
+                <option value="cheetah">Cheetah</option>
+                <option value="pelican">Pelican</option>
+            </select>
+    </form>
+
+
+    <form action="" id="search-employee">
+        <label for="search-employee">Zoek een medewerker</label>
+            <input type="search" id="search-employee"  />
+            <button>Zoek</button>
+    </form>
+
+
+    <% employees.forEach(employee =>{ %>
+        <article class="employee-card">
+          <ul class="employee-card-details">
+            <li><p><%=employee.name %></p></li>
+            <li><p><%=employee.sickdays %></p></li>
+            <li><p><%=employee.productivity %></p></li>
+          </ul>
+        </article>
+        <% }); %>
+
+<%- include('./partials/foot') %>
