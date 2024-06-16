@@ -4,7 +4,6 @@
         <div class="mobile">
         <%- include('./logo') %>
           <li><div class="hamburger"> <span class="bar"></span><span class="bar"></span><span class="bar"></span></div></li>
-          
         </div>
 
         <div class="desktop">
@@ -14,33 +13,26 @@
             </a></li>
 
         <li><a href="#" 
-          <% if (current == '/testing') { %> class="active active-2" <% } %>>
+          <% if (current == '/GA') { %> class="active active-2" <% } %>>
               <p>Google analytics</p>
           </a></li>
   
-        <li><a href="/lessons"
-          <% if (current == '/lessons') { %> class="active active-3" <% } %>>
+        <li><a href="#"
+          <% if (current == '/LA') { %> class="active active-3" <% } %>>
               <p>Linkedin analytics</p>
           </a></li>
   
-        <li><a href="/statistics"
-          <% if (current == '/statistics') { %> class="active active-4" <% } %>>
+        <li><a href="#"
+          <% if (current == '/HA') { %> class="active active-4" <% } %>>
               <p>Hotjar analytics</p>
   
             </a></li>
 
-        <li><a href="/profile"
-            <% if (current == '/profile') { %> class="active active-5" <% } %>>
+        <li><a href="CV"
+            <% if (current == '/CV') { %> class="active active-5" <% } %>>
         
                 <p>Customize view</p>
         
-            </a></li>
-  
-        <li><a href="/profile"
-          <% if (current == '/profile') { %> class="active active-6" <% } %>>
-  
-              <p>Account</p>
-  
             </a></li></div>
       </ul>
       
