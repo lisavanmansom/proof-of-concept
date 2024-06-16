@@ -20,8 +20,17 @@
         <article>
             <p>GoogleAd</p>
             <p>showcase of .....</p>
+
             <% googleAd.rows.forEach(function(row) { %>
                 <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
+
+                <div class="bg-ci">
+                    <span class="place"></span>
+                    <span class="border-animation ba1"></span>
+                    <span class="border-animation ba2"></span>
+                    <span class="border-animation ba3"></span>
+                </div>
+
             <% }) %>
         </article>
 
@@ -35,24 +44,28 @@
             <p>Active users per country</p>
             <p>showcase of .....</p>
 
-            <div class="c-data">
+            <ul class="c-data">
                 <% country.rows.slice(0, 30).forEach(function(row) { %>
-                    <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
+                    <li><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></li>
                 <% }) %>
-            </div>
+            </ul>
 
         </article>
 
         <article>
             <p>Active users per city</p>
             <p>showcase of .....</p>
+
+            <ul class="c-data">
             <% city.rows.slice(0, 30).forEach(function(row) { %>
-                <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
+                <li><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></li>
             <% }) %>
+        </ul>
+
         </article>
 
         <article>
-            <p>platform</p>
+            <p>Browsers</p>
             <p>showcase of .....</p>
             <%- include('./partials/charts/browser-chart') %>
 
