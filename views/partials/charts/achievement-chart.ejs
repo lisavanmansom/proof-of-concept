@@ -1,0 +1,52 @@
+<!-- chart with data from sessions -->
+<div class="chart">
+    <canvas id="achievementChart" width="100" height="200" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('achievementChart').getContext('2d');
+    const sortedData = <%- JSON.stringify(achievement.rows.sort((a, b) => a.metricValues[0].value - b.metricValues[0].value)) %>;
+
+    new Chart(ctx, {
+        type: 'line', 
+        data: {
+            labels: sortedData.map(row => row.dimensionValues[0].value),
+            datasets: [{
+                label: 'User data',
+                data: sortedData.map(row => row.metricValues[0].value),
+                borderWidth: 2, // Adjust border width
+                fill: false,
+                borderColor: '#669064', // Customize the line color
+                backgroundColor: 'rgba(227, 227, 227, 0.43)', // Customize the fill color
+                tension: 0.5 // Customize the line tension (curviness)
+            }]
+        },
+        options: {
+        responsive: true,
+        maintainAspectRatio: false, // Allow the chart to resize according to the canvas size
+        scales: {
+            x: {
+                grid: {
+                    display: false // Remove grid lines on the x-axis
+                }
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false // Remove grid lines on the y-axis
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 14 // Change the font size of the legend
+                    }
+                }
+            }
+        },
+    }
+});
+</script>

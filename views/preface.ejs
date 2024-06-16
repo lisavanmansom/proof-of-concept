@@ -18,26 +18,26 @@
         
         <article class="block1" id="block1">
 
-                <h2>Google</h2>
+                <div class="h-a"><h2>Google</h2><p>+ 5.3%</p></div>
+
+                <%- include('./partials/charts/achievement-chart') %>
 
         </article>
 
-
-        <!-- temporary code -->
-        <% achievement.rows.forEach(function(row) { %>
-            <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
-        <% }) %>
-
-
         <article class="block2" id="block2">
 
-            <h3>Linkedin</h3>
+            <div class="h-a"><h3>Linkedin</h3><p>+ 2%</p></div>
+
+            <%- include('./partials/charts/users-chart') %>
 
         </article>
 
         <article class="block3" id="block3">
 
-            <h4>Hotjar</h4>
+            <div class="h-a"><h4>Hotjar</h4><p>+ 7.2%</p></div>
+
+            <%- include('./partials/charts/newuser-chart') %>
+
 
         </article>
         
@@ -50,6 +50,7 @@
         </picture>
 
     </section>
+
 </main>
 
 <%- include('./partials/footer') %>

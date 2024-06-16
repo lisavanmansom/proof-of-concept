@@ -48,8 +48,38 @@ app.get('/preface', async function (request, response) {
 
   });
 
+  const [apiUsers] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+
+    // data total users per hour 
+    dateRanges: [{ startDate: '2024-06-01',
+                   endDate: 'today',
+                  },],
+
+    dimensions: [{ name: 'hour', },],
+
+    metrics: [{    name: 'activeUsers', },], 
+
+  });
+
+  const [apiNewUser] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+
+    // data total users per hour 
+    dateRanges: [{ startDate: '2024-06-01',
+                   endDate: 'today',
+                  },],
+
+    dimensions: [{ name: 'hour', },],
+
+    metrics: [{    name: 'newUsers', },], 
+
+  });
+
   response.render('preface', {
-    achievement: apiAchievement})
+    achievement: apiAchievement,
+    users: apiUsers,
+    newuser: apiNewUser})
 })
 
 // Route for the dashboard page
