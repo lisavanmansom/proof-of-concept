@@ -18,12 +18,14 @@
                     data: sortedData.map(row => row.metricValues[0].value),
                     borderWidth: 2, // Adjust border width
                     fill: true, // Ensure the line is not filled
-                    borderColor: '#B9FFB7', // Customize the line color
-                    backgroundColor: '#EBFFEB', // Customize the fill color
+                    borderColor: '#5E43FF', // Customize the line color
+                    backgroundColor: 'rgba(227, 227, 227, 0.43)', // Customize the fill color
                     tension: 0.5 // Customize the line tension (curviness)
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false, // Allow the chart to resize according to the canvas size
                 scales: {
                     x: {
                         grid: {

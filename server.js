@@ -137,11 +137,39 @@ app.get('/dashboard', async function (request, response) {
 
   });
 
+  const [apiGoogleAd] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    // data active users per city 
+
+    dateRanges: [{ startDate: '2023-06-01',
+                   endDate: 'today', },],
+
+    dimensions: [{ name: 'sessionGoogleAdsAdGroupId', },],
+
+    metrics: [{   name: 'activeUsers', },],
+
+  });
+
+  const [apiBrowser] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    // data active users per city 
+
+    dateRanges: [{ startDate: '2023-06-01',
+                   endDate: 'today', },],
+
+    dimensions: [{ name: 'browser', },],
+
+    metrics: [{   name: 'activeUsers', },],
+
+  });
+
   response.render('dashboard', {
     session: apiSessions,
     continent : apiContinent,
     country : apiCountry,
-    city : apiCity
+    city : apiCity,
+    browser: apiBrowser,
+    googleAd: apiGoogleAd
   })
 })
 

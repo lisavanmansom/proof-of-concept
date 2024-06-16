@@ -3,27 +3,61 @@
 
 <main class="d">
 
-    <article>
-    <%- include('./partials/charts/session-chart') %>
-    </article>
+    <header class="d-h">
+        <h1> Hey Rodion,</h1>
+        <p> subquote subquote!!!!!!</p>
+    </header>
+
+    <section>
+        <h2>Critical statistics</h2>
+
+        <article>
+            <p>User sessions</p>
+            <p>showcase of .....</p>
+            <%- include('./partials/charts/session-chart') %>
+        </article>
     
-    <article><p>30%</p></article>
+        <article>
+            <p>GoogleAd</p>
+            <p>showcase of .....</p>
+            <% googleAd.rows.forEach(function(row) { %>
+                <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
+            <% }) %>
+        </article>
 
-    <article>
-    <%- include('./partials//charts/continent-chart') %>
-    </article>
+        <article>
+            <p>Active users worldwide</p>
+            <p>showcase of .....</p>
+            <%- include('./partials/charts/continent-chart') %>
+        </article>
 
-    <article>
-    <% country.rows.slice(0, 30).forEach(function(row) { %>
-        <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
-    <% }) %>
-    </article>
+        <article>
+            <p>Active users per country</p>
+            <p>showcase of .....</p>
 
-    <article>
-        <% city.rows.slice(0, 30).forEach(function(row) { %>
-            <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
-        <% }) %>
-    </article>
+            <div class="c-data">
+                <% country.rows.slice(0, 30).forEach(function(row) { %>
+                    <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
+                <% }) %>
+            </div>
+
+        </article>
+
+        <article>
+            <p>Active users per city</p>
+            <p>showcase of .....</p>
+            <% city.rows.slice(0, 30).forEach(function(row) { %>
+                <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
+            <% }) %>
+        </article>
+
+        <article>
+            <p>platform</p>
+            <p>showcase of .....</p>
+            <%- include('./partials/charts/browser-chart') %>
+
+        </article>
+    </section>
     
 
    

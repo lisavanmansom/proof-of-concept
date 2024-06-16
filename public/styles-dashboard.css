@@ -1,37 +1,124 @@
 :root {
-    --primary-font: "Nunito", sans-serif;
-    /*--------brandcolours--------- */
-    /* the 50 is the main hue, if the number is higher 
-    or lower than it's a shadow or a highligth,  */
+  --primary-font: "Nunito", sans-serif;
+  /*--------brandcolours--------- */
+  /* the 50 is the main hue, if the number is higher 
+  or lower than it's a shadow or a highligth,  */
 
-      --GrannySmithApple-50:#B9FFB7;
-      --OrangeCrayola-50:#FF7535;
-      --MajorelleBlue-50:#5E43FF;
+    --GrannySmithApple-50:#B9FFB7;
+    --OrangeCrayola-50:#FF7535;
+    --MajorelleBlue-50:#5E43FF;
 
-      --Xiketic: #120B11;
-      --RaisinBlack: #302A2F;
-      --SonicSilver: #736f72;
-      --Snow: #FCF8F7;
-    }
+    --Xiketic: #120B11;
+    --RaisinBlack: #302A2F;
+    --SonicSilver: #736f72;
+    --Snow: #FCF8F7;
+
+    /*------chart colours------ */
+    /* the brand colours are implemented in the charts but
+    have a higher contrast. otherwise  it will not be accessible */
+    --GrannySmithApple-80:#669064;
+    --GrannySmithApple-90:#415F3F;
+    --OrangeCrayola-60:#EC4E04;
+    --OrangeCrayola-70:#B53C03;
+    --MajorelleBlue-60:#3D1EF6;
+
+    /* extra colours for elements */
+    --b-art:rgba(227, 227, 227, 0.43);
+    --t-art:rgba(221, 255, 212, 0.521);
+  }
 
     
 /*------------general styling------------- */
+nav {
+  overflow-x: hidden;
+  > ul {
+    > .mobile {
+      > svg {
+      width: 6em;
+      height: 6em;
+      margin: 2.3em 9em 0 0;
+      }
+    }
+  }
+}
+
 .d {
   align-items: center;
   display: flex;
-  /* height: 100dvh; */
   justify-content: center;
   flex-direction: column;
   overflow-y: hidden;
   width: 100%;
 
-  background-image: url("mesh-479.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
-  
-    #progressChart {
-      max-width: 100%;
-      width: 400px; /* Set the desired width */
-      height: 400px; /* Set the desired height */}
+    .d-h {
+      background: var(--b-art);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(13.6px);
+      -webkit-backdrop-filter: blur(13.6px);
+
+      height: 30em;
+      width: 80%;
+    }
+
+    > section {
+      width: 90%;
+
+      article {
+        border: .12em solid var(--MajorelleBlue-50);
+        width: 100%;
+        height: fit-content;
+
+        > p:first-child, p:nth-of-type(2) {
+          background-color: var(--Snow);
+          text-align: left;
+
+          width: 100%;
+        }
+
+        > p:first-child {
+          border-top-left-radius: .96em;
+          border-top-right-radius: .96em;
+          font-weight: 120;
+          font-size: 24px;
+          padding: .75em 0 0 .5em;
+        }
+
+        > p:nth-of-type(2) {
+          font-weight: 100;
+          padding: 0.29em 0 0 0;
+          color: var(--MajorelleBlue-60);
+          border-bottom: .012em solid var(--MajorelleBlue-50);
+        }
+      }
+      article:nth-of-type(2n) {
+        border: .12em solid var(--OrangeCrayola-50);
+        > p:nth-of-type(2) { color: var(--OrangeCrayola-70);
+          border-bottom: .012em solid var(--OrangeCrayola-50);}
+      }
+      article:nth-of-type(3n + 1) {
+        border: .12em solid var(--GrannySmithApple-50);
+        > p:nth-of-type(2) { color: var(--GrannySmithApple-90);
+          border-bottom: .012em solid var(--GrannySmithApple-50);}
+      }
+
+      article:nth-of-type(2) {
+        height: 20em;
+
+        > p:nth-of-type(3) {
+          display: inline-block;
+          height: 10em;
+          text-align: center;
+          width: 10em;
+          border: .12em solid var(--OrangeCrayola-50);
+          border-radius: 50%;
+        }
+      }
+      article:nth-of-type(4) {
+        > p:first-child, p:nth-of-type(2) {
+          background-color: var(--Snow);
+        }
+        > .c-data p {background-color: var(--t-art);}
+      }
+    }
   }

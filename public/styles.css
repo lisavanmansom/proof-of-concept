@@ -59,6 +59,9 @@
       --OrangeCrayola-60:#EC4E04;
       --OrangeCrayola-70:#B53C03;
       --MajorelleBlue-60:#3D1EF6;
+
+      /* extra colours for elements */
+      --b-art:rgba(227, 227, 227, 0.43);
     }
 
 
@@ -93,12 +96,11 @@ article {
   border-radius: 1em;
   z-index: 2;
 
-  background: rgba(227, 227, 227, 0.43);
+  background: var(--b-art);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(13.6px);
   -webkit-backdrop-filter: blur(13.6px);
-  border: .12em solid var(--OrangeCrayola-50);
 }
 
 .p {
@@ -111,7 +113,7 @@ article {
   }
 
 /*------------specific styling------------- */
-  header {
+  .p-h {
     align-items: center;
     justify-content: start;
     height: 21.5em;
@@ -182,16 +184,10 @@ article {
           transition: all 0.1s ease;
           z-index: 2;
 
-          background: rgba(227, 227, 227, 0.43);
-          border-radius: 16px;
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-          backdrop-filter: blur(13.6px);
-          -webkit-backdrop-filter: blur(13.6px);
-
           .h-a {
             width: 100%;
             height: 5em;
-            background-color: white;
+            background-color: var(--Snow);
             border-top-left-radius: .96em;
             border-top-right-radius: .96em;
             padding: .75em 0 0 .5em;
@@ -278,7 +274,7 @@ article {
 
   /*--------------mediaquery's--------------- */
   @media (min-width:450px) {
-    header { height: 25em;
+    .p-h { height: 25em;
      > svg { width: 7.5em; height: 7.5em;
              margin: 2.3em 14em 0 0;}
 
@@ -300,7 +296,7 @@ article {
 }
  
 @media (min-width:600px) {
-  header { height: 23.5em;
+  .p-h { height: 23.5em;
    > svg { width: 8em; height: 8em; 
            margin: 3.3em 16em 0 0; }
 
@@ -321,7 +317,7 @@ article {
 }
 
 @media (min-width:750px) {
-  header { height: 27em;
+  .p-h { height: 27em;
     > svg { width: 10em; height: 10em; 
             margin: 3.3em 30em 0 0; }
  
@@ -347,7 +343,7 @@ article {
 /* the 3 pre-dashboard overview  with the orbs becomes 
    from this mediaquery on a row layout             */
 @media (min-width:1000px) {
-  header { height: 30em;
+  .p-h { height: 30em;
     > svg { width: 11em; height: 11em; 
             margin: 3.3em 46em 0 0; }
  
