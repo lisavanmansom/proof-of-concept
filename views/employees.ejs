@@ -1,6 +1,5 @@
 <%- include('./partials/top') %>
 
-
 <h1>Employees</h1>
 
     <form action="" id="common-employee-filter">
@@ -12,9 +11,7 @@
                 <option value="sickdays">Ziektedagen</option>
                 <option value="productivity">Productiviteit</option>
             </select>
-     </form>    
-
-
+    </form>    
 
     <form action="" id="team-employee-filter">
         <label for="team-employee-filter">Team:</label>
@@ -26,13 +23,11 @@
             </select>
     </form>
 
-
     <form action="" id="search-employee">
         <label for="search-employee">Zoek een medewerker</label>
             <input type="search" id="search-employee"  />
             <button>Zoek</button>
     </form>
-
 
     <% employees.forEach(employee =>{ %>
         <article class="employee-card">
