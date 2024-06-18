@@ -1,34 +1,37 @@
 <%- include('./partials/head') %>
-<%- include('./partials/navigation', {current: '/'}); %>
+<!-- <%- include('./partials/navigation', {current: '/'}); %> -->
 
 <main class="d">
 
     <header class="d-h">
-        <h1> Hey Rodion,</h1>
-        <p> subquote subquote!!!!!!</p>
+        <picture class="orb-1"><%- include('./partials/orb') %></picture>
+
+        <%- include('./partials/logo') %>
+        <h1> Hello, Rodion,</h1>
+        <p>today is <time datetime="2024-06-20">June 20, 2024</time></p>
+
     </header>
 
     <section>
-        <h2>Critical statistics</h2>
 
         <article>
             <p>User sessions</p>
-            <p>showcase of .....</p>
+            <p>graph of user sessions</p>
             <%- include('./partials/charts/session-chart') %>
         </article>
     
         <article>
             <p>GoogleAd</p>
-            <p>showcase of .....</p>
+            <p>showcase of clicks by active users</p>
 
             <% googleAd.rows.forEach(function(row) { %>
                 <p><%= row.dimensionValues[0].value %>: <%= row.metricValues[0].value %></p>
 
                 <div class="bg-ci">
-                    <span class="place"></span>
-                    <span class="border-animation ba1"></span>
-                    <span class="border-animation ba2"></span>
-                    <span class="border-animation ba3"></span>
+                    <div class="place"></div>
+                    <div class="border-animation ba1"></div>
+                    <div class="border-animation ba2"></div>
+                    <div class="border-animation ba3"></div>
                 </div>
 
             <% }) %>
@@ -36,7 +39,7 @@
 
         <article>
             <p>Active users worldwide</p>
-            <p>showcase of .....</p>
+            <p>graph of active users per continent</p>
             <%- include('./partials/charts/continent-chart') %>
         </article>
 
@@ -54,7 +57,7 @@
 
         <article>
             <p>Active users per city</p>
-            <p>showcase of .....</p>
+            <p>updated today</p>
 
             <ul class="c-data">
             <% city.rows.slice(0, 30).forEach(function(row) { %>
@@ -66,12 +69,11 @@
 
         <article>
             <p>Browsers</p>
-            <p>showcase of .....</p>
+            <p>showcase active users per browser</p>
             <%- include('./partials/charts/browser-chart') %>
 
         </article>
     </section>
-    
-
-   
 </main>
+
+<%- include('./partials/footer') %>
